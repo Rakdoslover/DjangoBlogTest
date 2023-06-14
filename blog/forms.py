@@ -1,8 +1,18 @@
-from .models import Comment
 from django import forms
+from .models import Comment
 
+SELECT_ONE = [
+    ('first', 'First'),
+    ('second', 'Second'),    
+]
 
-class CommentForm(forms.ModelForm):
+class CommentForm(forms.Form):
+    select = forms.MultipleChoiceField(
+        required=False,
+        widget=forms.CheckboxSelectMultiple,
+        choices=SELECT_ONE,
+    )
+
     class Meta:
         model = Comment
-        fields = ('body',)
+        exclude = ['user']
