@@ -14,7 +14,4 @@ class CommentForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
         choices=SELECT_ONE,
     )
-
-    class Meta:
-        model = Comment
-        exclude = ['user']
+    
