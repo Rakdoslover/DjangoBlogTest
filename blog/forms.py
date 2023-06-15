@@ -14,4 +14,4 @@ class CommentForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
         choices=SELECT_ONE,
     )
-    
+

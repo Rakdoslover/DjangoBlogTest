@@ -44,14 +44,14 @@ class PostDetail(View):
 
         comment_form = CommentForm(data=request.POST)
 
-         comment_form.is_valid():
-          # comment_form.instance.email = request.user.email
-          # comment_form.instance.name = request.user.username
-          comment = comment_form.save(commit=False)
-          comment.post = post
-          comment.save()
-        se:
-            mment_form = CommentForm()
+        #  comment_form.is_valid():
+        #   comment_form.instance.email = request.user.email
+        #   comment_form.instance.name = request.user.username
+        #   comment = comment_form.save(commit=False)
+        #   comment.post = post
+        #   comment.save()
+        #   se:
+        #     mment_form = CommentForm()
 
         return render(
             request,
