@@ -1,10 +1,12 @@
 from django import forms
+from django.db import models
 from .models import Comment
 
 SELECT_ONE = [
     ('first', 'First'),
-    ('second', 'Second'),    
+    ('second', 'Second'),
 ]
+
 
 class CommentForm(forms.Form):
     select = forms.MultipleChoiceField(

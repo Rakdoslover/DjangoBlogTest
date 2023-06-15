@@ -33,7 +33,10 @@ DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['codestar-2023-rakdoslover.herokuapp.com', '8000-rakdoslover-djangoblogte-gxearg4wnp.us2.codeanyapp.com']
+ALLOWED_HOSTS = [
+    'codestar-2023-rakdoslover.herokuapp.com',
+    '8000-rakdoslover-djangoblogte-gxearg4wnp.us2.codeanyapp.com'
+]
 
 
 # Application definition
