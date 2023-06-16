@@ -48,7 +48,7 @@
 
                                 {% else %}
 
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i 
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
                                         class="far fa-heart"></i></button>
 
                                 {% endif %}
@@ -59,7 +59,7 @@
                             {% endif %}
                             <span class="text-secondary"> {{ post.number_of_likes }}</span>
                         </strong>
-                        
+
                     </div>
                     <div class="col-1">
                         {% with comments.count as total_comments %}
@@ -93,7 +93,7 @@
                         </span> wrote:
                     </p>
                     <!-- The body of the comment goes before the | -->
-                    {{ form.as_p }}
+                    {{ form.option_one_count }}
                 </div>
                 <!-- Our for loop ends here -->
                 {% endfor %}

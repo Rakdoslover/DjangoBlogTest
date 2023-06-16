@@ -8,10 +8,13 @@ SELECT_ONE = [
 ]
 
 
-class CommentForm(forms.Form):
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name',)
+
     select = forms.MultipleChoiceField(
         required=False,
         widget=forms.CheckboxSelectMultiple,
         choices=SELECT_ONE,
     )
-

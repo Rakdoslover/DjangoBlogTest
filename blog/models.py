@@ -38,7 +38,7 @@ class Comment(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
+    approved = models.BooleanField(default=True)
     option_one_count = models.IntegerField(default=0)
     option_two_count = models.IntegerField(default=0)
 
@@ -46,4 +46,4 @@ class Comment(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
+        return f"Comment {self.option_one_count} {self.option_two_count} by {self.name}"
