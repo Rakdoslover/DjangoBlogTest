@@ -46,4 +46,4 @@ class Comment(models.Model):
         ordering = ["created_on"]
 
     def __str__(self):
-        return f"Comment {self.option_one_count} {self.option_two_count} by {self.name}"
+        return f"Comment by {self.name}"

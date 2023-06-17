@@ -44,15 +44,6 @@ class PostDetail(View):
 
         comment_form = CommentForm(data=request.POST)
 
-        #  comment_form.is_valid():
-        #   comment_form.instance.email = request.user.email
-        #   comment_form.instance.name = request.user.username
-        #   comment = comment_form.save(commit=False)
-        #   comment.post = post
-        #   comment.save()
-        #   se:
-        #     mment_form = CommentForm()
-
         return render(
             request,
             "post_detail.html",
@@ -64,6 +55,15 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
+
+    def commentview(request):
+        commentform = CommentForm()
+        if request.method == 'POST':
+            commentform = CommentForm(request.POST)
+            if commentform.is_valid():
+                cd = commentform.cleaned_data
+                print(cd)
+        return render(request, ('post_detail', {'commentform': commentform}))
 
 
 class PostLike(View):
@@ -79,11 +79,4 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-def commentview(request):
-    commentform = CommentForm()
-    if request.method == 'POST':
-        commentform = CommentForm(request.POST)
-        if commentform.is_valid():
-            cd = commentform.cleaned_data
-            print(cd)
-    return render(request, ('post_detail', {'commentform': commentform}))
+
