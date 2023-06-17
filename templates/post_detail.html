@@ -82,21 +82,31 @@
             <h3>Your Choices:</h3>
             <div class="card-body">
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
-                {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ user.username }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
-                            {{ form.created_on }}
-                        </span> wrote:
-                    </p>
-                    <!-- The body of the comment goes before the | -->
-                    {{ form.option_one_count }}
+                <div class="col-1">
+                    <strong>
+                        {% if user.is_authenticated %}
+                        <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                            {% csrf_token %}
+                            {% if liked %}
+                
+                            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                                    class="fas fa-heart"></i></button>
+                
+                            {% else %}
+                
+                            <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                                    class="far fa-heart"></i></button>
+                
+                            {% endif %}
+                        </form>
+                        {% else %}
+                
+                        <span class="text-secondary"><i class="far fa-heart"></i></span>
+                        {% endif %}
+                        <span class="text-secondary"> {{ post.number_of_likes }}</span>
+                    </strong>
+                
                 </div>
-                <!-- Our for loop ends here -->
-                {% endfor %}
             </div>
         </div>
         <div class="col-md-3 card mb-3  mt-3 ">
