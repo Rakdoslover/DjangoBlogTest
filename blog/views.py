@@ -39,6 +39,7 @@ class PostDetail(View):
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by('created_on')
         liked = False
+        choice = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
 
@@ -52,11 +53,11 @@ class PostDetail(View):
                 "comments": comments,
                 "commented": True,
                 "liked": liked,
-                "comment_form": CommentForm()
+                "choice": choice,
             },
         )
 
-    def commentview(request):
+    def commentview(self, request):
         commentform = CommentForm()
         if request.method == 'POST':
             commentform = CommentForm(request.POST)
@@ -78,3 +79,15 @@ class PostLike(View):
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+
+class PostChoiceOne(View):
+
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+
+        if post.choices.filter(id=request.user.id).exists():
+            post.choices.remove(request.user)
+        else:
+            post.choices.add(request.user)
+
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
